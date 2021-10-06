@@ -14,17 +14,22 @@ class ViewController: UIViewController {
     @IBOutlet weak var numberLabel: UILabel!
     
     // 컴퓨터가 선택한 랜덤 숫자
-    var computerChoice = Int.random(in: 0...10)
+    var computerChoice: Int = 1
     // 내가 선택한 숫자
     var myChoice: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 1. 메인레이블에 "선택하세요" 표시
+        resetGameSetting()
+    }
+    
+    func resetGameSetting() {
+        // 1. 메인레이블 "선택하세요" 표시
         mainLabel.text = "선택하세요"
-        
-        // 2. 숫자레이블은 "" 표시
+        // 2. 숫자레이블을 "" (빈문자열)
         numberLabel.text = ""
+        // 3. 컴퓨터의 랜덤 숫자를 다시 선택
+        computerChoice = Int.random(in: 1...10)
     }
 
     @IBAction func buttonTapped(_ sender: UIButton) {
@@ -51,12 +56,7 @@ class ViewController: UIViewController {
     }
  
     @IBAction func resetButtonTapped(_ sender: UIButton) {
-        // 1. 메인레이블 "선택하세요" 표시
-        mainLabel.text = "선택하세요"
-        // 2. 숫자레이블을 "" (빈문자열)
-        numberLabel.text = ""
-        // 3. 컴퓨터의 랜덤 숫자를 다시 선택
-        computerChoice = Int.random(in: 1...10)
+        resetGameSetting()
     }
 }
 
